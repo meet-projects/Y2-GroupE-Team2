@@ -32,14 +32,48 @@ def home():
 >>>>>>> ccb9e38a01952b14ec50dc7940e01316d4bc4a74
 
 
-@app.route('/Learn_more', methods=['GET', 'POST'])
+@app.route('/learn_more', methods=['GET', 'POST'])
 def learn():
     return render_template("learn.html")
 
 
-@app.route('/Products', methods=['GET', 'POST'])
+@app.route('/products', methods=['GET', 'POST'])
 def products():
+<<<<<<< HEAD
     return render_template("products.html")
+=======
+        try:
+            products = db.child("Products").get().val()
+            return render_template("products.html", products=products)
+        except:
+            return render_template("products.html")
+
+@app.route('/pro/<string:product_id>')
+def pro(product_id):
+    product = db.child("Products").child(product_id).get().val()
+    return render_template("pro.html",product_id=product_id,product=product)
+
+
+
+
+
+
+
+
+
+@app.route('/add_product', methods=['GET','POST'])
+def add_product():
+    if request.method == "POST":
+        try:
+            title=request.form['title']
+            img=request.form['image']
+            text=request.form['text']
+            product={"title": title, "img": img, "text":text }
+            db.child("Products").push(product)
+        except:
+            return render_template("add_product.html")
+    return render_template("add_product.html")
+# >>>>>>> 1aff87dc5c75a1119af0ab790f31d0e3f9b45abd
 
 
 
