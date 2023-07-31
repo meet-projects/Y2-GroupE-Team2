@@ -22,22 +22,9 @@ app.config['SECRET_KEY'] = 'super-secret-key'
 
 #Code goes below here
 
-<<<<<<< HEAD
-
-=======
 @app.route('/', methods=['GET', 'POST'])
 def home():
     return render_template("home.html")
->>>>>>> 43f46cd057f5275ce3030e479f9d1811da24a50c
-
-
-@app.route('/', methods=['GET', 'POST'])
-def home():
-    return render_template("home.html")
-<<<<<<< HEAD
-
-=======
->>>>>>> 43f46cd057f5275ce3030e479f9d1811da24a50c
 
 
 @app.route('/learn_more', methods=['GET', 'POST'])
@@ -47,22 +34,12 @@ def learn():
 
 @app.route('/products', methods=['GET', 'POST'])
 def products():
-<<<<<<< HEAD
 
-    return render_template("products.html")
-
-        try:
-            products = db.child("Products").get().val()
-            return render_template("products.html", products=products)
-        except:
-            return render_template("products.html")
-=======
     try:
         products = db.child("Products").get().val()
         return render_template("products.html", products=products)
     except:
         return render_template("products.html")
->>>>>>> 43f46cd057f5275ce3030e479f9d1811da24a50c
 
 @app.route('/pro/<string:product_id>')
 def pro(product_id):
@@ -89,13 +66,10 @@ def add_product():
         except:
             return render_template("add_product.html")
     return render_template("add_product.html")
-<<<<<<< HEAD
 
-
-
-=======
->>>>>>> 43f46cd057f5275ce3030e479f9d1811da24a50c
-
+@app.route('/index')
+def index():
+    return render_template("index.html")
 
 #Code goes above here
 
