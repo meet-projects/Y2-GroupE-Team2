@@ -34,7 +34,25 @@ def learn():
 
 @app.route('/Products', methods=['GET', 'POST'])
 def products():
-    return render_template("products.html")
+        try:
+            products = db.child("Products").get().val()
+            return render_template("products.html", products=products)
+        except:
+            return render_template("products.html")
+
+
+@app.route('add_product', methods=['GET','POST'])
+def add_product():
+    if request.method=="POST":
+        try:
+            title=request.form['title']
+            img=request.form['image']
+            text=request.form['text']
+            product={"title": title, "img": img, "text":text }
+            db.child("Products").push(product)
+        except:
+            return render_template("add_product.html")
+    return render_template("add_product.html")
 
 
 
