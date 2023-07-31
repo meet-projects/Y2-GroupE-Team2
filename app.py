@@ -27,12 +27,12 @@ def home():
     return render_template("home.html")
 
 
-@app.route('/Learn_more', methods=['GET', 'POST'])
+@app.route('/learn_more', methods=['GET', 'POST'])
 def learn():
     return render_template("learn.html")
 
 
-@app.route('/Products', methods=['GET', 'POST'])
+@app.route('/products', methods=['GET', 'POST'])
 def products():
         try:
             products = db.child("Products").get().val()
