@@ -10,7 +10,7 @@ Config = {
   "messagingSenderId": "305217233371",
   "appId": "1:305217233371:web:2beb79ec73ea43130687fe",
   "measurementId": "G-30QPYFQRYP",
-  "databaseURL": "https://individual-project-7bc5e-default-rtdb.firebaseio.com/"
+  "databaseURL": "https://ukko-project-default-rtdb.firebaseio.com/"
 }
 
 firebase = pyrebase.initialize_app(Config)
@@ -41,16 +41,19 @@ def products():
     except:
         return render_template("products.html")
 
-@app.route('/pro/<string:product_id>')
+@app.route('/pro/<string:product_id>',methods=['GET','POST'])
 def pro(product_id):
     product = db.child("Products").child(product_id).get().val()
+
+    if request.method=="POST":
+        try:
+            review=request.form['review']
+            db.child("Reviews").child(product_id).push(review)
+            reviews= db.child("Reviews").child(product_id).get().val()
+            return render_template("pro.html", reviews=reviews,product_id=product_id,product=product)
+        except:
+            return render_template("pro.html")
     return render_template("pro.html",product_id=product_id,product=product)
-
-
-
-
-
-
 
 
 
@@ -70,6 +73,23 @@ def add_product():
 @app.route('/index')
 def index():
     return render_template("index.html")
+
+
+
+# @app.route('/review/<string:product_id>', methods=['GET','POST'])
+# def review(product_id):
+#     if request.method=="POST":
+#         try:
+#             review=request.form['review']
+#             db.child("Reviews").child(product_id).push(review)
+#             reviews= db.child("Reviews").child(product_id).get().val()
+#             return (url_for('review'))
+#             #return render_template("pro.html", reviews=reviews)
+#         except:
+#             return render_template("pro.html")
+#     return render_template("pro.html")        
+
+
 
 #Code goes above here
 

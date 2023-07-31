@@ -8,5 +8,21 @@
 	<h1>{{product['title']}}</h1>
     <img src="{{product['img']}}"/>
     <h2>{{product['text']}}</h2>
+
+    {%for review in review%}
+    <div>
+    <h2>{{reviews[review]}}</h2>
+    {%endfor%}
+
+
+    <form action="/pro/{{ product_id }}" method="POST">
+    	<div>
+    	<label> enter product review:</label>
+    	<input type="text" name="review" />
+    </div>
+    <div>
+    	<input type="submit"/>
+    </div>
+</form>
 </body>
-</html>>
+</html>
