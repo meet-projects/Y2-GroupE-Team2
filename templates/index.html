@@ -197,26 +197,29 @@
       </a>
       {%endfor%}
   </div>
-          <p>Quam sed id excepturi ccusantium dolorem ut quis dolores nisi llum nostrum enim velit qui ut et autem uia reprehenderit sunt deleniti</p>
+          <h2>our gluten free products:</h2>
         </div>
 
         <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry" data-portfolio-sort="original-order" data-aos="fade-up" data-aos-delay="100">
 
           
 
+          {% for product in products%}
+
           <div class="row gy-4 portfolio-container">
 
             <div class="col-xl-4 col-md-6 portfolio-item filter-app">
               <div class="portfolio-wrap">
-                <a href="static/assets/img/portfolio/app-1.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="static/assets/img/portfolio/app-1.jpg" class="img-fluid" alt=""></a>
+                <a href="/pro/{{ product }}" data-gallery="portfolio-gallery-app" class="glightbox"><img src="{{ products[product]['img'] }}" class="img-fluid" alt=""></a>
                 <div class="portfolio-info">
-                  <h4><a href="portfolio-details.html" title="More Details">App 1</a></h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  <h4><a href="/pro/{{ product }}" title="More Details">App 1</a></h4>
+                  
                 </div>
               </div>
-            </div><!-- End Portfolio Item -->
+            </div>
+            {%endfor%}<!-- End Portfolio Item -->
 
-            <div class="col-xl-4 col-md-6 portfolio-item filter-product">
+<!--             <div class="col-xl-4 col-md-6 portfolio-item filter-product">
               <div class="portfolio-wrap">
                 <a href="static/assets/img/portfolio/product-1.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="static/assets/img/portfolio/product-1.jpg" class="img-fluid" alt=""></a>
                 <div class="portfolio-info">
@@ -224,18 +227,18 @@
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
                 </div>
               </div>
-            </div><!-- End Portfolio Item -->
+            </div>End Portfolio Item -->
 
-            <div class="col-xl-4 col-md-6 portfolio-item filter-branding">
+<!--             <div class="col-xl-4 col-md-6 portfolio-item filter-branding">
               <div class="portfolio-wrap">
                 <a href="static/assets/img/portfolio/branding-1.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="static/assets/img/portfolio/branding-1.jpg" class="img-fluid" alt=""></a>
                 <div class="portfolio-info">
                   <h4><a href="portfolio-details.html" title="More Details">Branding 1</a></h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                </div>
+                  <p>Lorem ipsum, dolor sit amet consectetur</p> -->
+ <!--                </div>
               </div>
-            </div><!-- End Portfolio Item -->
-
+            </div>End Portfolio Item -->
+<!-- 
             <div class="col-xl-4 col-md-6 portfolio-item filter-books">
               <div class="portfolio-wrap">
                 <a href="static/assets/img/portfolio/books-1.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="static/assets/img/portfolio/books-1.jpg" class="img-fluid" alt=""></a>
@@ -243,10 +246,10 @@
                   <h4><a href="portfolio-details.html" title="More Details">Books 1</a></h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
                 </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-xl-4 col-md-6 portfolio-item filter-app">
+              </div> -->
+            <!-- </div>End Portfolio Item --> --> -->
+ -->
+            <!-- <div class="col-xl-4 col-md-6 portfolio-item filter-app">
               <div class="portfolio-wrap">
                 <a href="static/assets/img/portfolio/app-2.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="static/assets/img/portfolio/app-2.jpg" class="img-fluid" alt=""></a>
                 <div class="portfolio-info">
@@ -254,28 +257,28 @@
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
                 </div>
               </div>
-            </div><!-- End Portfolio Item -->
-
+            </div>End Portfolio Item -->
+<!-- 
             <div class="col-xl-4 col-md-6 portfolio-item filter-product">
               <div class="portfolio-wrap">
                 <a href="static/assets/img/portfolio/product-2.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="static/assets/img/portfolio/product-2.jpg" class="img-fluid" alt=""></a>
-                <div class="portfolio-info">
-                  <h4><a href="portfolio-details.html" title="More Details">Product 2</a></h4>
+                <div class="portfo -->lio-info">
+      <!--             <h4><a href="portfolio-details.html" title="More Details">Product 2</a></h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
                 </div>
               </div>
-            </div><!-- End Portfolio Item -->
+            </div>End Portfolio Item -->
 
-            <div class="col-xl-4 col-md-6 portfolio-item filter-branding">
+ <!--            <div class="col-xl-4 col-md-6 portfolio-item filter-branding">
               <div class="portfolio-wrap">
                 <a href="static/assets/img/portfolio/branding-2.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="static/assets/img/portfolio/branding-2.jpg" class="img-fluid" alt=""></a>
                 <div class="portfolio-info">
                   <h4><a href="portfolio-details.html" title="More Details">Branding 2</a></h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                </div>
+                  <p>Lorem ipsum, dolor sit amet consectetur</p> --> -->
+<!--                 </div>
               </div>
-            </div><!-- End Portfolio Item -->
-
+            </div> End Portfolio Item -->
+<!-- 
             <div class="col-xl-4 col-md-6 portfolio-item filter-books">
               <div class="portfolio-wrap">
                 <a href="static/assets/img/portfolio/books-2.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="static/assets/img/portfolio/books-2.jpg" class="img-fluid" alt=""></a>
@@ -283,9 +286,9 @@
                   <h4><a href="portfolio-details.html" title="More Details">Books 2</a></h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
                 </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
+              </div> -->
+            <!-- </div> End Portfolio Item --> -->
+<!-- 
             <div class="col-xl-4 col-md-6 portfolio-item filter-app">
               <div class="portfolio-wrap">
                 <a href="static/assets/img/portfolio/app-3.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="static/assets/img/portfolio/app-3.jpg" class="img-fluid" alt=""></a>
@@ -294,8 +297,8 @@
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
                 </div>
               </div>
-            </div><!-- End Portfolio Item -->
-
+            </div> --><!-- End Portfolio Item -->
+<!-- 
             <div class="col-xl-4 col-md-6 portfolio-item filter-product">
               <div class="portfolio-wrap">
                 <a href="static/assets/img/portfolio/product-3.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="static/assets/img/portfolio/product-3.jpg" class="img-fluid" alt=""></a>
@@ -304,9 +307,9 @@
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
                 </div>
               </div>
-            </div><!-- End Portfolio Item -->
+            </div> --><!-- End Portfolio Item -->
 
-            <div class="col-xl-4 col-md-6 portfolio-item filter-branding">
+<!--             <div class="col-xl-4 col-md-6 portfolio-item filter-branding">
               <div class="portfolio-wrap">
                 <a href="static/assets/img/portfolio/branding-3.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="static/assets/img/portfolio/branding-3.jpg" class="img-fluid" alt=""></a>
                 <div class="portfolio-info">
@@ -314,24 +317,24 @@
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
                 </div>
               </div>
-            </div><!-- End Portfolio Item -->
+            </div> --><!-- End Portfolio Item -->
 
-            <div class="col-xl-4 col-md-6 portfolio-item filter-books">
-              <div class="portfolio-wrap">
+            <!-- <div class="col-xl-4 col-md-6 portfolio-item filter-books"> -->
+ <!--              <div class="portfolio-wrap">
                 <a href="static/assets/img/portfolio/books-3.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="static/assets/img/portfolio/books-3.jpg" class="img-fluid" alt=""></a>
                 <div class="portfolio-info">
                   <h4><a href="portfolio-details.html" title="More Details">Books 3</a></h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
                 </div>
               </div>
-            </div><!-- End Portfolio Item -->
+            </div>End Portfolio Item -->
 
-          </div><!-- End Portfolio Container -->
+<!--           </div><!-- End Portfolio Container -->
 
-        </div>
+  <!--       </div>
 
-      </div>
-    </section><!-- End Portfolio Section -->
+      </div>  --> -->
+ -->    </section><!-- End Portfolio Section -->
 
 <!--  end of clils section -->
 
