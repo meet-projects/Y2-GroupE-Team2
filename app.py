@@ -27,6 +27,11 @@ def home():
     return render_template("home.html")
 
 
+@app.route('/', methods=['GET', 'POST'])
+def home():
+    return render_template("home.html")
+
+
 @app.route('/learn_more', methods=['GET', 'POST'])
 def learn():
     return render_template("learn.html")
@@ -65,9 +70,6 @@ def add_product():
         except:
             return render_template("add_product.html")
     return render_template("add_product.html")
-# >>>>>>> 1aff87dc5c75a1119af0ab790f31d0e3f9b45abd
-
-
 
 
 #Code goes above here
