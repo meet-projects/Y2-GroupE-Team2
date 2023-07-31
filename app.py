@@ -42,9 +42,9 @@ def products():
             return render_template("products.html")
 
 
-@app.route('add_product', methods=['GET','POST'])
+@app.route('/add_product', methods=['GET','POST'])
 def add_product():
-    if request.method=="POST":
+    if request.method == "POST":
         try:
             title=request.form['title']
             img=request.form['image']
