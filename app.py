@@ -35,10 +35,11 @@ def learn():
 
 @app.route('/Products', methods=['GET', 'POST'])
 def products():
-        products = db.child("Products").get().val()
-        return render_template("products.html", products=products)
-
-    return render_template("products.html")
+        try:
+            products = db.child("Products").get().val()
+            return render_template("products.html", products=products)
+        except:
+            return render_template("products.html")
 
 
 @app.route('add_product', methods=['GET','POST'])
