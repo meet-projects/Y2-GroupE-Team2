@@ -24,7 +24,7 @@ app.config['SECRET_KEY'] = 'super-secret-key'
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    return render_template("home.html")
+    return render_template("index.html")
 
 
 @app.route('/learn_more', methods=['GET', 'POST'])
