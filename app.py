@@ -41,6 +41,18 @@ def products():
         except:
             return render_template("products.html")
 
+@app.route('/pro/<string:product_id>')
+def pro(product_id):
+    product = db.child("Products").child(product_id).get().val()
+    return render_template("pro.html",product_id=product_id,product=product)
+
+
+
+
+
+
+
+
 
 @app.route('add_product', methods=['GET','POST'])
 def add_product():
