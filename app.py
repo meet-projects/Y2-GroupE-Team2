@@ -22,7 +22,6 @@ app.config['SECRET_KEY'] = 'super-secret-key'
 
 #Code goes below here
 
-
 @app.route('/', methods=['GET', 'POST'])
 def home():
     return render_template("home.html")
@@ -54,9 +53,9 @@ def pro(product_id):
 
 
 
-@app.route('add_product', methods=['GET','POST'])
+@app.route('/add_product', methods=['GET','POST'])
 def add_product():
-    if request.method=="POST":
+    if request.method == "POST":
         try:
             title=request.form['title']
             img=request.form['image']
