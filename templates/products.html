@@ -6,8 +6,11 @@
 	<title>products</title>
 </head>
 <body>
+	<h1>what is safe flour?</h1>
+	<p> New flour, containing gluten which is modified and synthesized in our labs. Such flour will be safe for people who suffer from Celiac, while fully functional. It is an ingredient for the food industry.</p>
+
 	<div id="products">
-		<h1>our gluten free products:</h1>
+		<h2>our gluten free products:</h2>
 		{%for product in products%}
 		    <a href="/pro/{{ product }}">
 	    <img src="{{ products[product]['img'] }}">
