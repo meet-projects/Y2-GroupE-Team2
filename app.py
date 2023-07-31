@@ -22,14 +22,9 @@ app.config['SECRET_KEY'] = 'super-secret-key'
 
 #Code goes below here
 
-<<<<<<< HEAD
-p
-=======
-
 @app.route('/', methods=['GET', 'POST'])
 def home():
     return render_template("home.html")
->>>>>>> ccb9e38a01952b14ec50dc7940e01316d4bc4a74
 
 
 @app.route('/learn_more', methods=['GET', 'POST'])
@@ -39,14 +34,11 @@ def learn():
 
 @app.route('/products', methods=['GET', 'POST'])
 def products():
-<<<<<<< HEAD
-    return render_template("products.html")
-=======
-        try:
-            products = db.child("Products").get().val()
-            return render_template("products.html", products=products)
-        except:
-            return render_template("products.html")
+    try:
+        products = db.child("Products").get().val()
+        return render_template("products.html", products=products)
+    except:
+        return render_template("products.html")
 
 @app.route('/pro/<string:product_id>')
 def pro(product_id):
