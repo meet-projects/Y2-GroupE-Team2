@@ -24,25 +24,27 @@ app.config['SECRET_KEY'] = 'super-secret-key'
 @app.route('/', methods=['GET', 'POST'])
 def home():
     try:
+        print("we're in the try clause")
         products = db.child("Products").get().val()
         print(products)
         return render_template("index.html", products=products)
+    
     except:
         return render_template("index.html")
 
-@app.route('/p/<string:name>',methods=['GET','POST'])
+
+@app.route('/p/<string:name>', methods=['GET','POST'])
 def product(name):
-    product = db.child("Products").child(name).get().val()
     if request.method=="POST":
+        product = db.child("Products").child(name).get().val()
         try:
             review=request.form['review']
-            db.child("Reviews").child(namr).get(review)
+            db.child("Reviews").child(name).get(review)
             reviews= db.child("Reviews").child(product_id).get().val()
             return render_template("product.html", reviews=reviews,name=name,product=product)
         except:
             return render_template("product.html")
-    return render_template("product.html",name=name,product=product)
-
+    return render_template("product.html")#,name=name,product=product)
 
 
 @app.route('/add_product', methods=['GET','POST'])
@@ -53,7 +55,7 @@ def add_product():
             img=request.form['image']
             text=request.form['text']
             product={"title": title, "img": img, "text":text }
-            db.child("Products").child(product['title']).set(product)
+            db.child("Products").push(product)
         except:
             return render_template("add_product.html")
     return render_template("add_product.html")

@@ -37,6 +37,10 @@ body {
   color: var(--color-default);
 }
 
+#entire_page{
+  text-align: center;
+}
+
 a {
   color: var(--color-primary);
   text-decoration: none;
@@ -200,6 +204,16 @@ section {
   overflow: hidden;
   background: #fff;
   transition: all 0.6s ease-out;
+}
+
+#test{
+    position: fixed;
+  inset: 0;
+  z-index: 999999;
+  overflow: hidden;
+  background: #fff;
+  transition: all 0.6s ease-out;
+
 }
 
 #preloader:before {

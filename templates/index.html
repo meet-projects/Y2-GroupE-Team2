@@ -169,13 +169,17 @@
 
             <div class="col-xl-4 col-md-6 portfolio-item filter-books">
               <div class="portfolio-wrap">
-                <a href="assets/img/portfolio/books-3.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="{{url_for('static', filename='assets/img/portfolio/books-3.jpg')}}" class="img-fluid" alt=""></a>
+                <a href="/p/{{product}}" data-gallery="portfolio-gallery-app" class="glightbox">
+                  <img src="{{ products[product]['img'] }}" class="img-fluid" alt="">
+                </a>
                 <div class="portfolio-info">
-                  <h4><a href="portfolio-details.html" title="More Details">{{ products[product]['title'] }}</a></h4>
+                  <h4><a href="/p/{{product}}" title="More Details">{{ products[product]['title'] }}</a></h4>
                   <p>{{ products[product]['text'] }}</p>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
+
+            
 
           {% endfor %}
           </div><!-- End Portfolio Container -->
