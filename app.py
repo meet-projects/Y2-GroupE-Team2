@@ -42,11 +42,15 @@ def product(name):
             text=request.form['review']
             review={"review":text}
             db.child("Reviews").child(name).push(review)
-            #reviews= db.child("Reviews").child(name).get().val()
-            return render_template("portfolio-details.html", reviews=reviews,name=name,product=product)
+            return render_template("product.html", reviews=reviews,name=name,product=product)
         except:
-            return render_template("portfolio-details.html")
-    return render_template("portfolio-details.html",name=name,product=product,reviews=reviews)
+            return render_template("product.html")
+    return render_template("product.html",name=name,product=product,reviews=reviews)
+
+
+# @app.route('/test', methods=['GET','POST'])
+# def t():
+#     return render_template("test.html")
 
 
 @app.route('/add_product', methods=['GET','POST'])
