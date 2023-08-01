@@ -35,16 +35,18 @@ def home():
 
 @app.route('/p/<string:name>', methods=['GET','POST'])
 def product(name):
+    product = db.child("Products").child(name).get().val()
+    reviews= db.child("Reviews").child(name).get().val()
     if request.method=="POST":
-        product = db.child("Products").child(name).get().val()
         try:
-            review=request.form['review']
-            db.child("Reviews").child(name).get(review)
-            reviews= db.child("Reviews").child(product_id).get().val()
-            return render_template("product.html", reviews=reviews,name=name,product=product)
+            text=request.form['review']
+            review={"review":text}
+            db.child("Reviews").child(name).push(review)
+            #reviews= db.child("Reviews").child(name).get().val()
+            return render_template("portfolio-details.html", reviews=reviews,name=name,product=product)
         except:
-            return render_template("product.html")
-    return render_template("product.html")#,name=name,product=product)
+            return render_template("portfolio-details.html")
+    return render_template("portfolio-details.html",name=name,product=product,reviews=reviews)
 
 
 @app.route('/add_product', methods=['GET','POST'])
@@ -62,18 +64,18 @@ def add_product():
 
 
 
-# @app.route('/review/<string:product_id>', methods=['GET','POST'])
-# def review(product_id):
-#     if request.method=="POST":
-#         try:
-#             review=request.form['review']
-#             db.child("Reviews").child(product_id).push(review)
-#             reviews= db.child("Reviews").child(product_id).get().val()
-#             return (url_for('review'))
-#             #return render_template("pro.html", reviews=reviews)
-#         except:
-#             return render_template("pro.html")
-#     return render_template("pro.html")        
+@app.route('/review/<string:product_id>', methods=['GET','POST'])
+def review(product_id):
+    if request.method=="POST":
+        try:
+            review=request.form['review']
+            db.child("Reviews").child(product_id).push(review)
+            reviews= db.child("Reviews").child(product_id).get().val()
+            product = db.child("Products").child(name).get().val()
+            return render_template("", reviews=reviews,product=product )
+        except:
+            return render_template("portfolio-details.html")
+    return render_template("portfolio-details.html")        
 
 
 
