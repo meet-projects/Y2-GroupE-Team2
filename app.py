@@ -14,7 +14,6 @@ Config = {
 }
 
 firebase = pyrebase.initialize_app(Config)
-auth = firebase.auth()
 db = firebase.database()
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
@@ -24,36 +23,25 @@ app.config['SECRET_KEY'] = 'super-secret-key'
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    return render_template("index.html")
-
-
-@app.route('/learn_more', methods=['GET', 'POST'])
-def learn():
-    return render_template("learn.html")
-
-
-@app.route('/products', methods=['GET', 'POST'])
-def products():
-
     try:
         products = db.child("Products").get().val()
-        return render_template("products.html", products=products)
+        print(products)
+        return render_template("index.html", products=products)
     except:
-        return render_template("products.html")
+        return render_template("index.html")
 
-@app.route('/pro/<string:product_id>',methods=['GET','POST'])
-def pro(product_id):
-    product = db.child("Products").child(product_id).get().val()
-
+@app.route('/p/<string:name>',methods=['GET','POST'])
+def product(name):
+    product = db.child("Products").child(name).get().val()
     if request.method=="POST":
         try:
             review=request.form['review']
-            db.child("Reviews").child(product_id).push(review)
+            db.child("Reviews").child(namr).get(review)
             reviews= db.child("Reviews").child(product_id).get().val()
-            return render_template("pro.html", reviews=reviews,product_id=product_id,product=product)
+            return render_template("product.html", reviews=reviews,name=name,product=product)
         except:
-            return render_template("pro.html")
-    return render_template("pro.html",product_id=product_id,product=product)
+            return render_template("product.html")
+    return render_template("product.html",name=name,product=product)
 
 
 
@@ -65,14 +53,10 @@ def add_product():
             img=request.form['image']
             text=request.form['text']
             product={"title": title, "img": img, "text":text }
-            db.child("Products").push(product)
+            db.child("Products").child(product['title']).set(product)
         except:
             return render_template("add_product.html")
     return render_template("add_product.html")
-
-@app.route('/index')
-def index():
-    return render_template("index.html")
 
 
 
