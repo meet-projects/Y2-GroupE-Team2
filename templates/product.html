@@ -83,7 +83,7 @@
     <img src="{{product['img']}}"/>
     <h2>{{product['text']}}</h2>
 <h2>reviews for this product:</h2>
-    {%for review in reviews%}
+    {% for review in reviews %}
     <div>
     <h4>{{reviews[review]['review']}}</h4>
     {%endfor%}
