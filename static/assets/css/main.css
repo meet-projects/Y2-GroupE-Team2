@@ -37,6 +37,10 @@ body {
   color: var(--color-default);
 }
 
+#whole_page{
+  text-align: center;
+}
+
 #entire_page{
   text-align: center;
 }

@@ -1,13 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Impact Bootstrap Template - Portfolio Details</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ukko</title>
+</head>
+  <style >
+
+   /* input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  }
+*/
+  .review-comment{
+  width: 75%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 1.25em;
+  height: 3em;
+  }
+    /*input[type=button], input[type=submit], input[type=reset] {
+      background-color: #04AA6D;
+      border: none;
+      color: white;
+      padding: 16px 32px;
+      text-decoration: none;
+      margin: 4px 2px;
+      cursor: pointer;
+    }*/
+
+
+    .submit-btn {
+      background-color: #FBD534;
+      border: none;
+      color: white;
+      width: 6em;
+      height: 3em;
+      text-decoration: none;
+      margin: 4px 2px;
+      cursor: pointer;
+      font-size: 1.25em;
+      font-weight: bold;
+      border-radius: 5%;
+    }
+
+    .review-table {
+      width: 64em;
+    }
+
+    .align-center {
+      text-align: center;
+    }
+
+
+  </style>
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -27,18 +83,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{{ url_for('static', filename='assets/css/main.css') }}" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Impact
-  * Updated: Jul 27 2023 with Bootstrap v5.3.1
-  * Template URL: https://bootstrapmade.com/impact-bootstrap-business-website-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-</head>
-
 <body>
-
   <!-- ======= Header ======= -->
   <!-- <section id="topbar" class="topbar d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
@@ -54,6 +99,7 @@
       </div>
     </div>
   </section>End Top Bar --> 
+  <div id="whole_page">
   <header id="header" class="header d-flex align-items-center">
 
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
@@ -82,11 +128,16 @@
       <h1>{{product['title']}}</h1>
     <img src="{{product['img']}}"/>
     <h2>{{product['text']}}</h2>
-<h2>reviews for this product:</h2>
+    <h2>reviews for this product:</h2>
+    {% if reviews is not none %}
+
     {% for review in reviews %}
     <div>
     <h4>{{reviews[review]['review']}}</h4>
     {%endfor%}
+    {% else %}
+    <h4> No reviews yet </h4>
+    {% endif %}
 <section id="contact" class="contact">
       <div class="container" data-aos="fade-up">
 
@@ -94,13 +145,21 @@
       <div class="row gx-lg-0 gy-4">
       <div class="col-lg-8">
 
-    <form action="/p/{{ name }}" method="POST">
-
-      <label> enter product review:</label>
-      <input type="text" name="review" />
-    </div>
-    <div>
-      <input type="submit"/>
+    <form action="/action_page.php">
+      <center><label for="fname"><h2>Enter your review</h2></label><br>
+      <table class="review-table">
+        <tr>
+          <td class="align-center">
+            <!-- INPUT TEXT -->
+            <input  type="text" id="fname" name="firstname" placeholder="Your review.." / class="review-comment">
+          </td>
+          <td >
+            <!-- SUBMIT BUTTON -->
+            <input type="submit"/ class="submit-btn">
+          </td>
+        </tr>
+      </table>
+      </center>
     </div>
     </div>
   </form>
@@ -133,7 +192,7 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+</div>
 
 </body>
-
 </html>
